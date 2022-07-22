@@ -1,16 +1,15 @@
 package br.com.dio.desafio.dominio;
 
 import java.util.*;
-import java.util.function.ToDoubleFunction;
 
 public class Dev {
 
     private String nome;
-    private Set<String> conteudosInscritos = new LinkedHashSet<>();
-    private Set<String> conteudosConcluidos = new LinkedHashSet<>();
+    private Set<Conteudo> conteudosInscritos = new LinkedHashSet<>();
+    private Set<Conteudo> conteudosConcluidos = new LinkedHashSet<>();
 
     public void progredir() {
-        Optional<String> conteudo = this.conteudosInscritos.stream().findFirst();
+        Optional<Conteudo> conteudo = this.conteudosInscritos.stream().findFirst();
         if (conteudo.isPresent()) {
             this.conteudosConcluidos.add(conteudo.get());
             this.conteudosInscritos.remove(conteudo.get());
@@ -20,14 +19,15 @@ public class Dev {
     }
 
     public double calcularTotalXp() {/*
-        Iterator<String> iterator = this.conteudosConcluidos.iterator();
+        Iterator<Conteudo> iterator = this.conteudosConcluidos.iterator();
         double soma = 0;
         while (iterator.hasNext()) {
-            soma += 20D;
+            double nextValue = iterator.next().calcularXp();
+            soma += nextValue;
         }
         return soma;*/
 
-        return this.conteudosConcluidos.stream().mapToDouble(s -> 20D).sum();
+        return this.conteudosConcluidos.stream().mapToDouble(Conteudo::calcularXp).sum();
     }
 
     public String getNome() {
@@ -38,19 +38,19 @@ public class Dev {
         this.nome = nome;
     }
 
-    public Set<String> getConteudosInscritos() {
+    public Set<Conteudo> getConteudosInscritos() {
         return conteudosInscritos;
     }
 
-    public void setConteudosInscritos(Set<String> conteudosInscritos) {
+    public void setConteudosInscritos(Set<Conteudo> conteudosInscritos) {
         this.conteudosInscritos = conteudosInscritos;
     }
 
-    public Set<String> getConteudosConcluidos() {
+    public Set<Conteudo> getConteudosConcluidos() {
         return conteudosConcluidos;
     }
 
-    public void setConteudosConcluidos(Set<String> conteudosConcluidos) {
+    public void setConteudosConcluidos(Set<Conteudo> conteudosConcluidos) {
         this.conteudosConcluidos = conteudosConcluidos;
     }
 
