@@ -1,11 +1,9 @@
 package br.com.dio.desafio;
 
-import br.com.dio.desafio.dominio.Bootcamp;
-import br.com.dio.desafio.dominio.Curso;
-import br.com.dio.desafio.dominio.Dev;
-import br.com.dio.desafio.dominio.Mentoria;
+import br.com.dio.desafio.dominio.*;
 
 import java.time.LocalDate;
+import java.util.HashSet;
 
 public class Main {
 
@@ -18,6 +16,14 @@ public class Main {
         conteudoPadroesDeProjeto.setTitulo("Mentoria de Padrões de Projeto");
         conteudoPadroesDeProjeto.setDescricao("Mentoria de Padrões de Projeto com Java");
         conteudoPadroesDeProjeto.setData(LocalDate.now());
+        DesafioProjeto desafioProjetoJava = new DesafioProjeto(new HashSet<>() {{
+            add("Java");
+            add("OO");
+            add("DesignPatterns");
+        }});
+        desafioProjetoJava.setTitulo("Desafio de Projeto de OO");
+        desafioProjetoJava.setDescricao("Desafio de Projeto de OO com Java");
+        desafioProjetoJava.setDificuldade(2);
 
         System.out.println(" --- Bootcamp --- ");
 
@@ -26,6 +32,7 @@ public class Main {
         bootcampJava.setDescricao("Descrição Bootcamp Java Developer");
         bootcampJava.getConteudos().add(conteudoPOO);
         bootcampJava.getConteudos().add(conteudoPadroesDeProjeto);
+        bootcampJava.getConteudos().add(desafioProjetoJava);
         System.out.println(bootcampJava.getConteudos());
 
         System.out.println(" --- Camila --- ");
@@ -35,6 +42,7 @@ public class Main {
         devCamila.inscreverBootcamp(bootcampJava);
 
         System.out.println("Conteúdos Inscritos Camila:" + devCamila.getConteudosInscritos());
+        devCamila.progredir();
         devCamila.progredir();
         devCamila.progredir();
 
@@ -51,6 +59,7 @@ public class Main {
         devJoao.inscreverBootcamp(bootcampJava);
 
         System.out.println("Conteúdos Inscritos João:" + devJoao.getConteudosInscritos());
+        devJoao.progredir();
         devJoao.progredir();
         devJoao.progredir();
 
