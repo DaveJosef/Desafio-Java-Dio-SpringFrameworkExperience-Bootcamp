@@ -8,14 +8,17 @@ import java.util.HashSet;
 public class Main {
 
     public static void main(String[] args) {
+
         Curso conteudoPOO = new Curso();
         conteudoPOO.setTitulo("Curso de POO");
         conteudoPOO.setDescricao("Curso de POO com Java");
         conteudoPOO.setCargaHoraria(8);
+
         Mentoria conteudoPadroesDeProjeto = new Mentoria();
         conteudoPadroesDeProjeto.setTitulo("Mentoria de Padrões de Projeto");
         conteudoPadroesDeProjeto.setDescricao("Mentoria de Padrões de Projeto com Java");
         conteudoPadroesDeProjeto.setData(LocalDate.now());
+
         DesafioProjeto desafioProjetoJava = new DesafioProjeto(new HashSet<>() {{
             add("Java");
             add("OO");
